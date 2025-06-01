@@ -1,5 +1,6 @@
 import type { Config } from 'tailwindcss'
 
+
 const config: Config = {
   content: [
     './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
@@ -43,6 +44,7 @@ const config: Config = {
         sans: ['var(--font-sans)', 'system-ui', 'sans-serif'],
         mono: ['var(--font-mono)', 'monospace'],
         raleway: ['var(--font-raleway)', 'Raleway', 'sans-serif'], // 👈 add this line
+          poppins: ['Poppins', 'sans-serif'],
       },
       animation: {
         'pulse': 'pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite',

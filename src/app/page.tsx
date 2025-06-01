@@ -37,7 +37,7 @@ export default function Home() {
   });
 
   // Layout state
-  const [viewMode, setViewMode] = useState<'split' | 'chat' | 'canvas'>('split');
+  const [viewMode, setViewMode] = useState<'split' | 'chat' | 'canvas'>('chat');
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const chatContainerRef = useRef<HTMLDivElement>(null);
 
@@ -288,8 +288,8 @@ export default function Home() {
   // Loading state
   if (status === 'loading') {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 flex items-center justify-center">
-        <div className="text-white text-xl">Loading...</div>
+      <div className="min-h-screen  flex items-center justify-center">
+        <span className="loader"></span>
       </div>
     );
   }
@@ -460,33 +460,43 @@ export default function Home() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900">
-      <div className="flex h-screen overflow-hidden">
+    <div className="min-h-screen bg-[#24252D]">
+      <div className="flex h-screen ">
         {/* Left Sidebar - Controls & Personas */}
         <div className="w-80 bg-black/30 backdrop-blur-lg border-r border-white/10 flex flex-col">
           {/* Header */}
           <div className="p-6 border-b border-white/10">
             <div className="flex items-center gap-3 mb-4">
               <div className="w-10 h-10 bg-gradient-to-r from-blue-500 to-purple-600 rounded-lg flex items-center justify-center">
-                <span className="text-lg font-bold text-white">P</span>
+                <img src="/mainlogo.png" alt="Perspectra Logo" />
               </div>
               <div>
-                <h1 className="text-xl font-bold text-white">Perspectra</h1>
-                <p className="text-xs text-slate-400">AI Boardroom</p>
+                <h1 className="text-xl font-raleway text-white">Perspectra</h1>
+               
               </div>
             </div>
             
             {/* Problem Summary */}
-            <div className="bg-white/5 rounded-lg p-3 border border-white/10">
-              <h3 className="text-sm font-medium text-slate-300 mb-2">Current Discussion</h3>
-              <p className="text-sm text-white line-clamp-3">{problem || 'No topic set'}</p>
-              <button 
-                onClick={() => setShowProblemInput(true)}
-                className="text-xs text-blue-400 hover:text-blue-300 mt-2 transition-colors"
-              >
-                Change topic
-              </button>
-            </div>
+            <div className="bg-[#33333E] rounded-lg p-3 border border-white/10 flex items-start gap-3">
+  <div className="flex-shrink-0">
+    <svg width="28" height="28" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect width="64" height="64" rx="12" fill="#A259FF" />
+      <path d="M16 20C16 17.79 17.79 16 20 16H44C46.21 16 48 17.79 48 20V36C48 38.21 46.21 40 44 40H28L20 46V40H20C17.79 40 16 38.21 16 36V20Z" fill="white" />
+    </svg>
+  </div>
+
+  <div className="flex-1">
+    <h3 className="text-[16px] font-poppins text-[#F1F3F7] mb-1">Current Discussion</h3>
+    <p className="text-[14px] text-white line-clamp-3">{problem || 'No topic set'}</p>
+    <button 
+      onClick={() => setShowProblemInput(true)}
+      className="text-[13px] text-purple-400 hover:text-blue-300 ml-30 mt-2 transition-colors"
+    >
+      Change topic
+    </button>
+  </div>
+</div>
+
           </div>
 
           {/* Conversation Controls */}
@@ -504,7 +514,7 @@ export default function Home() {
           </div>
 
           {/* Manual Personas */}
-          <div className="flex-1 p-6 overflow-y-auto">
+          <div className="flex-1 p-6 ">
             <h2 className="text-lg font-semibold text-white mb-4">Manual Control</h2>
             <div className="space-y-3">
               {Object.entries(PERSONA_INFO).map(([key, info]) => (
@@ -537,7 +547,7 @@ export default function Home() {
         </div>
 
         {/* Main Content Area */}
-        <div className="flex-1 flex flex-col overflow-hidden">
+        <div className="flex-1 flex flex-col ">
           {/* Top Bar */}
           <div className="bg-black/20 backdrop-blur-lg border-b border-white/10 p-4 flex-shrink-0">
             <div className="flex items-center justify-between">
