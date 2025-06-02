@@ -539,7 +539,7 @@ export default function Home() {
     {/* Scrollable Grid Content */}
     {isCardOpen && (
       <div className="border-t border-[#464652] overflow-y-auto" style={{ maxHeight: '180px' }}>
-        <div className="p-4 grid grid-cols-2 gap-4">
+        <div className="p-6 grid grid-cols-2 gap-2">
           {Object.entries(PERSONA_INFO).map(([key, info]) => (
             <PersonaCard
               key={key}

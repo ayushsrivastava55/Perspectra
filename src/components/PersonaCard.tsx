@@ -34,7 +34,7 @@ export function PersonaCard({ info, isActive, isLoading, onClick }: PersonaCardP
     <div
       onClick={onClick}
       className={`
-        relative p-2 rounded-xl border w-full max-w-[120px]
+        relative p-2 rounded-xl border w-full max-w-[100px]
         flex flex-col items-center gap-1 text-center cursor-pointer
         transition-all duration-200
         ${isActive 
@@ -44,8 +44,7 @@ export function PersonaCard({ info, isActive, isLoading, onClick }: PersonaCardP
         ${isLoading ? 'opacity-100 cursor-not-allowed' : 'hover:scale-[1.00]'}
       `}
     >
-      {/* ℹ️ Tooltip Button */}
-     <div className="absolute top-2 right-2 group">
+  <div className="absolute top-1 right-1 z-20 group">
   <span className="text-white text-xs cursor-default select-none">
     <svg 
       width="20" 
@@ -60,15 +59,16 @@ export function PersonaCard({ info, isActive, isLoading, onClick }: PersonaCardP
       <rect x="11" y="18" width="4" height="4" rx="2" fill="#D9D9D9" />
     </svg>
   </span>
-  <div className="absolute z-10 hidden group-hover:block bg-black text-white text-[10px] rounded px-2 py-1 w-40 -right-1 top-5">
+  <div className="absolute z-30 hidden group-hover:block bg-black text-white text-[10px] rounded px-2 py-2 w-40 -right-1 top-5">
     {info.description}
   </div>
 </div>
 
 
+
       {/* Profile Image */}
       <div className={`
-        w-15 h-15 rounded-[10px] overflow-hidden flex items-center justify-center
+        w-10 h-10 rounded-[10px] overflow-hidden flex items-center justify-center
         ${isActive ? 'bg-white/20' : 'bg-white/10 group-hover:bg-white/15'}
         ${isLoading ? 'animate-pulse' : ''}
       `}>
