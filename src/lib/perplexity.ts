@@ -200,24 +200,24 @@ export const PERSONA_INFO = {
     name: 'System-1 Thinker',
     description: 'Fast, intuitive, emotional thinking',
     color: 'bg-red-500',
-    icon: '⚡'
+    image: '/char1.png' // Replace with your actual image paths
   },
   system2: {
-    name: 'System-2 Thinker', 
+    name: 'System-2 Thinker',
     description: 'Slow, deliberate, analytical thinking',
     color: 'bg-blue-500',
-    icon: '🧠'
+    image: '/char2.png'
   },
   moderator: {
     name: 'Moderator',
     description: 'Neutral facilitator and synthesizer',
     color: 'bg-green-500',
-    icon: '⚖️'
+    image: '/char2.png'
   },
   devilsAdvocate: {
     name: "Devil's Advocate",
     description: 'Challenges assumptions and identifies risks',
     color: 'bg-purple-500',
-    icon: '👹'
+    image: '/char3.png'
   }
-}; 
+};

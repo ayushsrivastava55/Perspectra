@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect, useRef } from 'react';
+
 import { useSession } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
 import { useConversationStore } from '@/store/conversation';
@@ -14,6 +15,8 @@ import { AutoConversationEngine, ConversationState } from '@/lib/autoConversatio
 
 
 export default function Home() {
+  const [isCardOpen, setIsCardOpen] = useState(false);
+
   const { data: session, status } = useSession();
   const router = useRouter();
   const { messages, problem, setProblem, addMessage, isLoading, setIsLoading, clearConversation } = useConversationStore();
@@ -465,7 +468,7 @@ export default function Home() {
         {/* Left Sidebar - Controls & Personas */}
         <div className="w-80 bg-black/30 backdrop-blur-lg border-r border-white/10 flex flex-col">
           {/* Header */}
-          <div className="p-6 border-b border-white/10">
+          <div className="p-4">
             <div className="flex items-center gap-3 mb-4">
               <div className="w-10 h-10 bg-gradient-to-r from-blue-500 to-purple-600 rounded-lg flex items-center justify-center">
                 <img src="/mainlogo.png" alt="Perspectra Logo" />
@@ -477,7 +480,7 @@ export default function Home() {
             </div>
             
             {/* Problem Summary */}
-            <div className="bg-[#33333E] rounded-lg p-3 border border-white/10 flex items-start gap-3">
+            <div className="bg-[#33333E] rounded-lg p-3 flex items-start gap-3">
   <div className="flex-shrink-0">
     <svg width="28" height="28" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
       <rect width="64" height="64" rx="12" fill="#A259FF" />
@@ -500,7 +503,7 @@ export default function Home() {
           </div>
 
           {/* Conversation Controls */}
-          <div className="p-6 border-b border-white/10">
+          <div className="pl-4 pr-4">
             <ConversationControls
               conversationState={conversationState}
               onStart={handleStartAutoConversation}
@@ -514,20 +517,44 @@ export default function Home() {
           </div>
 
           {/* Manual Personas */}
-          <div className="flex-1 p-6 ">
-            <h2 className="text-lg font-semibold text-white mb-4">Manual Control</h2>
-            <div className="space-y-3">
-              {Object.entries(PERSONA_INFO).map(([key, info]) => (
-                <PersonaCard
-                  key={key}
-                  info={info}
-                  isActive={selectedPersona === key}
-                  isLoading={isLoading && selectedPersona === key}
-                  onClick={() => handlePersonaResponse(key as PersonaType)}
-                />
-              ))}
-            </div>
-          </div>
+    <div className="flex-1 p-4">
+  <div className="bg-[#33333E] rounded-[10px] overflow-hidden">
+    {/* Header */}
+    <div 
+      className="text-lg font-semibold text-white flex items-center p-4 justify-between cursor-pointer"
+      onClick={() => setIsCardOpen(!isCardOpen)}
+    >
+      Manual Control
+      <button
+        className="text-white hover:text-gray-300 text-xl"
+        onClick={(e) => {
+          e.stopPropagation();
+          setIsCardOpen(!isCardOpen);
+        }}
+      >
+        {isCardOpen ? '−' : '+'}
+      </button>
+    </div>
+
+    {/* Scrollable Grid Content */}
+    {isCardOpen && (
+      <div className="border-t border-[#464652] overflow-y-auto" style={{ maxHeight: '180px' }}>
+        <div className="p-4 grid grid-cols-2 gap-4">
+          {Object.entries(PERSONA_INFO).map(([key, info]) => (
+            <PersonaCard
+              key={key}
+              info={info}
+              isActive={selectedPersona === key}
+              isLoading={isLoading && selectedPersona === key}
+              onClick={() => handlePersonaResponse(key as PersonaType)}
+            />
+          ))}
+        </div>
+      </div>
+    )}
+  </div>
+</div>
+
 
           {/* Stats */}
           <div className="p-6 border-t border-white/10">

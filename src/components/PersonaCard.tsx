@@ -1,10 +1,8 @@
-import { PersonaType } from '@/lib/perplexity';
-
 interface PersonaInfo {
   name: string;
   description: string;
   color: string;
-  icon: string;
+  image: string; // URL or path to profile picture
 }
 
 interface PersonaCardProps {
@@ -33,69 +31,73 @@ export function PersonaCard({ info, isActive, isLoading, onClick }: PersonaCardP
   const colorClasses = getColorClasses(info.color);
 
   return (
-    <button
+    <div
       onClick={onClick}
-      disabled={isLoading}
       className={`
-        w-full p-4 rounded-xl border transition-all duration-200 text-left group
+        relative p-2 rounded-xl border w-full max-w-[120px]
+        flex flex-col items-center gap-1 text-center cursor-pointer
+        transition-all duration-200
         ${isActive 
           ? `bg-gradient-to-r ${colorClasses} shadow-lg scale-105` 
           : 'bg-white/5 border-white/10 hover:bg-white/10 hover:border-white/20'
         }
-        ${isLoading ? 'opacity-75 cursor-not-allowed' : 'hover:scale-102 cursor-pointer'}
+        ${isLoading ? 'opacity-100 cursor-not-allowed' : 'hover:scale-[1.00]'}
       `}
     >
-      <div className="flex items-start gap-3">
-        {/* Icon */}
-        <div className={`
-          w-10 h-10 rounded-lg flex items-center justify-center text-lg shrink-0
-          ${isActive 
-            ? 'bg-white/20' 
-            : 'bg-white/10 group-hover:bg-white/15'
-          }
-          ${isLoading ? 'animate-pulse' : ''}
-        `}>
-          {isLoading ? (
-            <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
-          ) : (
-            info.icon
-          )}
-        </div>
+      {/* ℹ️ Tooltip Button */}
+     <div className="absolute top-2 right-2 group">
+  <span className="text-white text-xs cursor-default select-none">
+    <svg 
+      width="20" 
+      height="20" 
+      viewBox="0 0 26 26" 
+      fill="none" 
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <rect width="26" height="26" rx="5" fill="#D9D9D9" />
+      <rect x="2" y="2" width="22" height="22" rx="5" fill="#8D3FD7" />
+      <rect x="11" y="4" width="4" height="12" rx="2" fill="#D9D9D9" />
+      <rect x="11" y="18" width="4" height="4" rx="2" fill="#D9D9D9" />
+    </svg>
+  </span>
+  <div className="absolute z-10 hidden group-hover:block bg-black text-white text-[10px] rounded px-2 py-1 w-40 -right-1 top-5">
+    {info.description}
+  </div>
+</div>
 
-        {/* Content */}
-        <div className="flex-1 min-w-0">
-          <h3 className={`
-            font-semibold text-sm mb-1 transition-colors
-            ${isActive ? 'text-white' : 'text-white group-hover:text-white'}
-          `}>
-            {info.name}
-          </h3>
-          <p className={`
-            text-xs leading-relaxed transition-colors
-            ${isActive ? 'text-white/80' : 'text-slate-400 group-hover:text-slate-300'}
-          `}>
-            {info.description}
-          </p>
-          
-          {isLoading && (
-            <div className="mt-2 text-xs text-white/60">
-              Thinking...
-            </div>
-          )}
-        </div>
 
-        {/* Active Indicator */}
-        {isActive && (
-          <div className="w-2 h-2 bg-white rounded-full shrink-0 animate-pulse" />
+      {/* Profile Image */}
+      <div className={`
+        w-15 h-15 rounded-[10px] overflow-hidden flex items-center justify-center
+        ${isActive ? 'bg-white/20' : 'bg-white/10 group-hover:bg-white/15'}
+        ${isLoading ? 'animate-pulse' : ''}
+      `}>
+        {isLoading ? (
+          <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+        ) : (
+          <img
+            src={info.image}
+            alt={info.name}
+            className="w-full h-full object-cover"
+            draggable={false}
+          />
         )}
       </div>
 
-      {/* Progress Bar */}
-      {isActive && (
-        <div className="mt-3 h-1 bg-white/20 rounded-full overflow-hidden">
-          <div className="h-full bg-white/40 rounded-full animate-pulse" />
-        </div>
+      {/* Name */}
+      <h3 className="text-white text-xs font-medium leading-tight line-clamp-2">
+        {info.name}
+      </h3>
+
+      {/* Optional: Thinking Indicator */}
+      {isLoading && (
+        <div className="text-[10px] text-white/60 mt-1">Thinking...</div>
       )}
-    </button>
+
+      {/* Optional: Active Pulse */}
+      {isActive && (
+        <div className="absolute bottom-2 right-2 w-2 h-2 bg-white rounded-full animate-pulse" />
+      )}
+    </div>
   );
-} 
+}
