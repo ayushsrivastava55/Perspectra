@@ -639,7 +639,7 @@ export default function Home() {
           </div>
 
           {/* Content Area */}
-          <div className="flex-1 flex overflow-hidden">
+          <div className="flex-1 flex bg-[#313131] overflow-hidden">
             {/* Chat Section */}
             {(viewMode === 'split' || viewMode === 'chat') && (
               <div className={`${viewMode === 'split' ? 'w-1/2' : 'w-full'} flex flex-col border-r border-white/10 overflow-hidden`}>
@@ -650,9 +650,9 @@ export default function Home() {
                   style={{ scrollBehavior: 'smooth' }}
                 >
                   {messages.length === 0 ? (
-                    <div className="text-center py-16">
-                      <div className="text-6xl mb-4">🤔</div>
-                      <h3 className="text-xl font-semibold text-white mb-2">Ready to start the discussion</h3>
+                    <div className="text-center py-40">
+                      <div className="text-6xl mb-4"></div>
+                      <h3 className="text-3xl font-semibold text-neutral-300 mb-2">Ready to start the discussion</h3>
                       <p className="text-slate-400 mb-6">
                         Start an auto-conversation or click on any AI advisor to get their perspective.
                       </p>
@@ -668,7 +668,7 @@ export default function Home() {
                 </div>
 
                 {/* Input Area - Fixed at bottom */}
-                <div className="bg-black/20 backdrop-blur-lg border-t border-white/10 p-4 flex-shrink-0">
+                <div className=" backdrop-blur-lg  p-4 flex-shrink-0">
                   {showInterruptInput ? (
                     <div className="space-y-3">
                       <div className="flex items-center gap-2 text-yellow-400 text-sm">
@@ -712,7 +712,7 @@ export default function Home() {
                         onChange={(e) => setUserInput(e.target.value)}
                         onKeyPress={(e) => e.key === 'Enter' && handleSendMessage()}
                         placeholder="Add your thoughts or ask a question..."
-                        className="flex-1 px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                        className="flex-1 px-4 py-3 bg-[#24252D] border border-[#8D3FD7] rounded-xl text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                       />
                       <Button
                         onClick={handleSendMessage}
