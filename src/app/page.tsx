@@ -470,8 +470,8 @@ export default function Home() {
           {/* Header */}
           <div className="p-4">
             <div className="flex items-center gap-3 mb-4">
-              <div className="w-10 h-10 bg-gradient-to-r from-blue-500 to-purple-600 rounded-lg flex items-center justify-center">
-                <img src="/mainlogo.png" alt="Perspectra Logo" />
+              <div className="w-10 h-10  rounded-lg flex items-center justify-center ">
+                <img src="/mainlogo.png" alt="Perspectra Logo" className='rounded-[10px]' />
               </div>
               <div>
                 <h1 className="text-xl font-raleway text-white">Perspectra</h1>
@@ -493,7 +493,7 @@ export default function Home() {
     <p className="text-[14px] text-white line-clamp-3">{problem || 'No topic set'}</p>
     <button 
       onClick={() => setShowProblemInput(true)}
-      className="text-[13px] text-purple-400 hover:text-blue-300 ml-30 mt-2 transition-colors"
+      className="text-[13px] text-purple-400 hover:text-blue-300 ml-35 mt-2 transition-colors"
     >
       Change topic
     </button>
@@ -557,7 +557,7 @@ export default function Home() {
 
 
           {/* Stats */}
-          <div className="p-6 border-t border-white/10">
+          <div className="p-4 ">
             <div className="grid grid-cols-2 gap-4 text-center">
               <div className="bg-white/5 rounded-lg p-3">
                 <div className="text-lg font-bold text-white">{messages.length}</div>
@@ -717,9 +717,30 @@ export default function Home() {
                       <Button
                         onClick={handleSendMessage}
                         disabled={!userInput.trim()}
-                        className="px-6 py-3 bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 disabled:opacity-50"
+                        className="px-3 py-6 bg-[#8F44D9] hover:bg-[#862EDE]  disabled:opacity-50"
                       >
-                        Send
+                       <svg
+      width="50"
+      height="50"
+      viewBox="0 0 59 58"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      {/* Removed background rectangle */}
+      <path
+        d="M19.2625 24.085L38.2625 17.7675C38.6791 17.6322 39.1249 17.6148 39.5508 17.717C39.9766 17.8193 40.3659 18.0373 40.6756 18.347C40.9852 18.6567 41.2033 19.046 41.3055 19.4718C41.4078 19.8977 41.3903 20.3435 41.255 20.76L34.9375 39.76C34.7814 40.2352 34.4792 40.6489 34.074 40.9422C33.6689 41.2355 33.1815 41.3934 32.6813 41.3934C32.1811 41.3934 31.6937 41.2355 31.2886 40.9422C30.8834 40.6489 30.5812 40.2352 30.425 39.76L28.05 32.635C27.934 32.28 27.7359 31.9573 27.4718 31.6932C27.2077 31.4291 26.8851 31.231 26.53 31.115L19.405 28.74C18.8639 28.6486 18.3712 28.3726 18.0105 27.9589C17.6499 27.5452 17.4437 27.0194 17.4269 26.4709C17.4101 25.9224 17.5838 25.3849 17.9184 24.95C18.2531 24.515 18.728 24.2094 19.2625 24.085Z"
+        stroke="white"
+        strokeWidth="3"
+        strokeMiterlimit="10"
+      />
+      <path
+        d="M27.625 31.3761L30.9738 28.0273"
+        stroke="white"
+        strokeWidth="3"
+        strokeMiterlimit="10"
+        strokeLinecap="round"
+      />
+    </svg>
                       </Button>
                     </div>
                   )}
