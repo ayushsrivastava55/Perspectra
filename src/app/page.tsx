@@ -501,7 +501,7 @@ export default function Home() {
 </div>
 
           </div>
-
+<div className='overflow-auto max-h-100 scrollbar-white'>
           {/* Conversation Controls */}
           <div className="pl-4 pr-4">
             <ConversationControls
@@ -538,7 +538,7 @@ export default function Home() {
 
     {/* Scrollable Grid Content */}
     {isCardOpen && (
-      <div className="border-t border-[#464652] overflow-y-auto" style={{ maxHeight: '180px' }}>
+      <div className="border-t border-[#464652] " >
         <div className="p-6 grid grid-cols-2 gap-2">
           {Object.entries(PERSONA_INFO).map(([key, info]) => (
             <PersonaCard
@@ -553,24 +553,29 @@ export default function Home() {
       </div>
     )}
   </div>
+<div className="pointer-events-none absolute bottom-28 left-0 right-0 h-10 bg-gradient-to-t from-[#191A1F] to-transparent"></div>
+
+</div>
+
 </div>
 
 
           {/* Stats */}
-          <div className="p-4 ">
-            <div className="grid grid-cols-2 gap-4 text-center">
-              <div className="bg-white/5 rounded-lg p-3">
-                <div className="text-lg font-bold text-white">{messages.length}</div>
-                <div className="text-xs text-slate-400">Messages</div>
-              </div>
-              <div className="bg-white/5 rounded-lg p-3">
-                <div className="text-lg font-bold text-white">
-                  {new Set(messages.map(m => m.persona)).size}
-                </div>
-                <div className="text-xs text-slate-400">Perspectives</div>
-              </div>
-            </div>
-          </div>
+         <div className="fixed bottom-0 w-full p-4 ">
+  <div className="grid grid-cols-2 gap-4 text-center">
+    <div className="bg-white/5 rounded-lg p-3">
+      <div className="text-lg font-bold text-white">{messages.length}</div>
+      <div className="text-xs text-slate-400">Messages</div>
+    </div>
+    <div className="bg-white/5 rounded-lg p-3">
+      <div className="text-lg font-bold text-white">
+        {new Set(messages.map(m => m.persona)).size}
+      </div>
+      <div className="text-xs text-slate-400">Perspectives</div>
+    </div>
+  </div>
+</div>
+
         </div>
 
         {/* Main Content Area */}

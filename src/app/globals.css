@@ -200,3 +200,29 @@ textarea:focus-visible {
     background-position: 100% 0, 120px 0, 120px 40px, 120px 80px;
   }
 }
+
+
+/* Minimal white scrollbar for WebKit browsers */
+.scrollbar-white {
+  scrollbar-width: thin;             /* Firefox */
+  scrollbar-color: #ffffff20 transparent;  /* Firefox */
+}
+
+.scrollbar-white::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+.scrollbar-white::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.scrollbar-white::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 255, 255, 0.4);  /* white with 40% opacity */
+  border-radius: 8px;
+  border: 1px solid transparent;  /* for a sleek edge */
+}
+
+.scrollbar-white::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(255, 255, 255, 0.6);
+}
