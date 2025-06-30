@@ -25,7 +25,7 @@ export function MessageBubble({ message }: MessageBubbleProps) {
       )}>
         {!isUser && personaInfo && (
           <div className="flex items-center gap-2 mb-2 pb-2 border-b border-gray-100">
-            <span className="text-lg">{personaInfo.icon}</span>
+            <span className="text-lg">{personaInfo.name.charAt(0)}</span>
             <span className="font-semibold text-sm text-gray-700">
               {personaInfo.name}
             </span>

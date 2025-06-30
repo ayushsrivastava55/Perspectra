@@ -8,7 +8,7 @@ import { PersonaCard } from '@/components/PersonaCard';
 import { MessageBubble } from '@/components/MessageBubble';
 import { ConversationCanvas } from '@/components/ConversationCanvas';
 import { ConversationControls } from '@/components/ConversationControls';
-import { Button } from '@/components/ui/Button';
+import { Button } from '@/components/ui/button';
 import { PERSONA_INFO, PersonaType } from '@/lib/perplexity';
 import { AutoConversationEngine, ConversationState } from '@/lib/autoConversation';
 

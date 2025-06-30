@@ -715,7 +715,7 @@ Provide only valid JSON, no additional text.`;
         position: { x, y },
         data: {
           label: personaInfo?.name || persona,
-          icon: personaInfo?.icon || '🤖',
+          icon: personaInfo?.name?.charAt(0) || '🤖',
           stance: isPositive ? 'Positive' : 'Cautious',
           views
         },

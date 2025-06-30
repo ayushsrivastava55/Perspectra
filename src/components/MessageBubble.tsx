@@ -66,7 +66,7 @@ export function MessageBubble({ message }: MessageBubbleProps) {
           {/* Persona Header */}
           <div className="flex items-center gap-3 mb-3 pb-3 border-b border-white/10">
             <div className="w-8 h-8 bg-white/10 rounded-lg flex items-center justify-center text-sm">
-              {personaInfo?.icon}
+              {personaInfo?.name?.charAt(0)}
             </div>
             <div>
               <h4 className="font-semibold text-white text-sm">

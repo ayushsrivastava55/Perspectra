@@ -5,7 +5,7 @@ import { useConversationStore } from '@/store/conversation';
 import { PersonaType, PERSONA_INFO } from '@/lib/perplexity';
 import { MessageBubble } from './MessageBubble';
 import { PersonaCard } from './PersonaCard';
-import { Button } from '@/components/ui/Button';
+import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 
 export function ConversationInterface() {

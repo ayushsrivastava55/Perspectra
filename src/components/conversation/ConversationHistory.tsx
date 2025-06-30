@@ -2,7 +2,7 @@
 
 import { useEffect } from 'react';
 import { useConversationStore } from '@/store/conversation';
-import { Button } from '@/components/ui/Button';
+import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { formatDistanceToNow } from 'date-fns';
 

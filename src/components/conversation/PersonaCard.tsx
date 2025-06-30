@@ -23,7 +23,7 @@ export function PersonaCard({ persona, isActive, onClick }: PersonaCardProps) {
     >
       <CardHeader className="pb-3">
         <CardTitle className="flex items-center gap-2 text-lg">
-          <span className="text-2xl">{info.icon}</span>
+          <span className="text-2xl">{info.name.charAt(0)}</span>
           {info.name}
         </CardTitle>
       </CardHeader>
