@@ -4,6 +4,7 @@ Welcome to Perspectra, your personal AI advisory panel for better decision-makin
 
 ## 🎯 What is Perspectra?
 
+Perspectra is the next big thing
 Perspectra creates a virtual "boardroom for one" where you can discuss decisions and problems with AI personas representing different cognitive styles:
 
 - **⚡ System-1 Thinker**: Fast, intuitive, emotional responses
